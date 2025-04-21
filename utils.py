@@ -11,7 +11,7 @@ def get_gold_price():
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
             data = response.json()
-            ounce_price = float(data['price'])  # 1 troy ounce altın fiyatı
+            ounce_price = float(data['price'])  
             gram_price = round(ounce_price / 31.1035, 2)
             return gram_price
         else:
@@ -22,6 +22,6 @@ def get_gold_price():
         return 70.0
 
 def calculate_price(product, gold_price):
-    popularity = product['popularityScore']  # 0-1 arası kullanılmalı
+    popularity = product['popularityScore'] 
     weight = product['weight']
     return round((popularity + 1) * weight * gold_price, 2)
